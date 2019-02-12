@@ -1,0 +1,73 @@
+#!/bin/bash
+# Lab: 09
+# Name: Fleming Patel
+# Lab Section Number: 300
+# Name of the script file is "myscript"
+# Date: 30/11/2015
+# Purpose: Provides user to use groupmanagement in Linux
+
+# This is a run menu that provides user to chose option from A TO F
+# And Q for Exit.
+
+
+#Starting for while loop
+while :
+#When while loop executed it's do blow things
+do
+
+#User interface for selecting options
+echo "A) Create a user account";
+echo "B) Delete a user account";
+echo "C) Change supplementary group for a user account";
+echo "D) Change initial group for a user account";
+echo "E) Change default login shell for a user account";
+echo "F) Change account expiration date for a user account";
+echo "Q) Quit";
+
+#Gives a selection for user anything user enter it's stored in choice
+read choice
+#(($choice=0)) #Giving default value to choice
+
+# Here choice pass through the case. 
+#If any identical choice and case are match it's execute that case body
+case $choice in
+
+     A|a) echo "Username"; read username #read username form user
+          echo "User's home directory"; read directory #read directroy from user
+          echo "Default login shell"; read shell #read default shell from user
+
+        sudo useradd $username -d $directory -s $shell #this command add the user with username, home directory, default shell which entered by the 																			user
+	;;
+     B|b) echo "Enter the username"; read username1 #read useaccount from user
+	 # echo "Enter the home directory"; read directory1 #read directory from user
+
+	sudo userdel $username1  #delete the user account
+	#sudo userdel $directory1 #delete the user directory
+	;;
+     C|c) echo "Enter the username"; read username2 #read useraccount from user
+	  echo "Enter the groupname"; read name #read groupname from user
+
+	sudo usermod -G $name $username2 #username and group name that is added as a supplementary group for the user account
+	;;
+     D|d) echo "Enter the username"; read username3 #read useraccount from user
+          echo "Enter the groupname"; read name1 #read group name from user
+
+	sudo usermod -g $name1 $username3 #command change username and group name that is used as the initial group for the user account, and change 						   the initial group for the user account.
+	;;
+     E|e) echo "Enter the uername"; read username4 #reads useraccount from user
+	  echo "Enter the shellname"; read shell1 #reads shellname from the user
+
+	sudo chsh -s $shell1 $username4 #changes default shell for that useraccount
+	;;
+     F|f) echo "Enter the username"; read username5 #read useraccount from user
+	  echo "Enter the expiration date"; read date #read date from user
+
+	sudo usermod -e $date $username5 #change expiration date for the user
+	;;
+     Q|q) exit #exit from script
+	;;
+  
+   esac
+sleep 3 #sleeps 3 seconds and redisplay the interface menu
+done
+

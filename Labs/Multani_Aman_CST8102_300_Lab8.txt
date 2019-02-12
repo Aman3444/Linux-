@@ -1,0 +1,54 @@
+# lab8 Linux 
+echo
+echo "Please enter the marks below using integer numbers!"
+echo
+
+read -p "Enter Assignment Mark(0 to 40): " VAR1
+read -p "Enter Test1 Mark(0 to 15): " VAR2
+read -p  "Enter Test2 Mark(0 to 15): " VAR3
+read -p "Enter Final Exam Mark(0 to 30): " VAR4
+ 
+echo
+echo
+VAR0=$((VAR1+VAR2+VAR3+VAR4))
+
+if [ $VAR0 -ge 90 ] && [ $VAR0 -le 100 ]
+then
+   echo "Your final grade is A+"
+elif [ $VAR0 -ge 85 ] && [ $VAR0 -le 89 ]
+then
+   echo "Your final grade is A"
+elif [ $VAR0 -ge 80 ] && [ $VAR0 -le 84 ]
+then
+   echo "Your final grade is A-"
+elif [ $VAR0 -ge 77 ] && [ $VAR0 -le 79 ]
+then
+    echo "Your final grade is B+"
+elif [ $VAR0 -ge 73 ] && [ $VAR0 -le 76 ]
+then
+    echo "Your final grade is B"
+elif [ $VAR0 -ge 70 ] && [ $VAR0 -le 72 ]
+then
+    echo "Your final grade is B-"
+elif [ $VAR0 -ge 67 ] && [ $VAR0 -le 69 ]
+then
+    echo "Your final grade is C+"
+elif [ $VAR0 -ge 63 ] && [ $VAR0 -le 66 ]
+then
+    echo "Your final grade is C"
+elif [ $VAR0 -ge 60 ] && [ $VAR0 -le 62 ]
+then
+    echo "Your final grade is C-"
+elif [ $VAR0 -ge 57 ] && [ $VAR0 -le 59 ]
+then
+    echo "Your final grade is D+"
+elif [ $VAR0 -ge 53 ] && [ $VAR0 -le 56 ]
+then
+    echo "Your final grade is D"
+elif [ $VAR0 -ge 50 ] && [ $VAR0 -le 52 ]
+then
+    echo "Your final grade is D-"
+elif [ $VAR0 -ge 0 ] && [ $VAR0 -le 49 ]
+then
+    echo "Your final grade is F"
+fi

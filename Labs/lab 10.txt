@@ -1,0 +1,167 @@
+#enter the no. of parameters
+
+echo "Do you want ot enter no parameters or three parameters"
+echo "Enter 0 for no parameters"
+echo "Enter 3 for 3 parameters"
+
+read -p "Enter the selection:" p
+
+#if there are 0 parameters
+if [ "$p" = "0" ]; then
+
+read -p "my calculation " e1 e2 e3
+
+#checking bthe first no. if it is an integer or not
+
+while ! [[ "$e1" =~ ^[0-9]+$ ]];
+do
+echo "enter Integers only"
+read -p "Enter the selection:" e1 e2 e3
+done
+
+
+#addition or subtraction
+
+while [ "$e2" != "+" ] && [ "$e2" != "-" ];
+
+do
+echo "Please enter + or -"
+read -p "Enter the selection:" e1 e2 e3
+
+#checking the second no. if it is an integer or not
+
+done
+while ! [[ "$e3" =~ ^[0-9]+$ ]];
+
+do
+echo "Integers only"
+read -p "Enter the selection:" e1 e2 e3
+
+done
+
+
+#condition for add
+if [ "$e2" = "+" ]; then
+
+((sum=$e1+$e3))
+echo "The sum of "$e1" plus "$e3" equals "$sum""
+
+fi
+
+#condition for subtract
+if [ "$e2" = "-" ]; then
+
+((sum=$e1-$e3))
+echo "The sum of "$e1" minus "$e3" equals "$sum""
+
+fi
+
+sleep 3
+exit
+
+#if the input parameter is 3
+
+elif [ "$p" = "3" ]; then
+
+
+select=a
+while [ "$select" != "X" ] && [ "$select" != "x" ];
+
+do
+
+#menu 1 for calculation or exit
+
+echo "Please pick one of the following options"
+echo "C) Calculation"
+echo "X) Exit"
+
+read -p "Enter the selection:" select
+
+while [ "$select" != "C" ] && [ "$select" != "c" ] && [ $select != "X" ] && [ $selection != "x" ];
+
+do
+
+echo "Please enter C or X"
+read -p "Enter the selection:" select
+
+done
+# x for quiting
+
+if [ "$select" = "X" ] || [ "$select" = "x" ]; then
+break
+
+fi
+
+#entering the first no.
+
+read -p "Please enter an integer number or X to exit:" select
+
+if [ "$select" = "X" ] || [ "$select" = "x" ]; then
+
+break
+
+fi
+
+c1="$select"
+
+#menu 2 for add or subtract
+
+echo "Please pick one of the following options"
+echo "+) Add"
+echo "-) Subtract"
+echo "X) Exit"
+
+read -p "Enter the selection:" select
+
+while [ "$select" != "+" ] && [ "$select" != "-" ];
+
+do
+
+#asking for input
+
+echo "Please enter +, - or X"
+read -p "Enter the selection:" select
+done
+
+if [ "$select" = "X" ] || [ "$select" = "x" ]; then
+
+break
+
+fi
+
+c2="$select"
+
+#entering for second no.
+
+read -p "Please enter an integer number or X to exit:" select
+
+if [ "$select" = "X" ] || [ "$select" = "x" ]; then
+
+break
+
+fi
+
+c3="$select"
+
+# if the input is +
+
+if [ "$e2" = "+" ]; then
+
+((sum=$e1+$e3))
+echo "The sum of "$e1" plus "$e3" equals "$sum""
+
+fi
+
+#if the input is -
+
+if [ "$e2" = "-" ]; then
+
+((sum=$e1-$e3))
+echo "The sum of "$e1" minus "$e3" equals "$sum""
+
+fi
+sleep 3
+
+done
+fi
+

@@ -1,0 +1,138 @@
+#!/bin/bash
+
+ 
+
+# Lab 9
+
+# 
+
+# 
+
+# CST8102
+
+# myscript
+
+
+
+selection=
+
+while [ "$selection" != q ] && [ "$selection" != "Q" ] ; do #how to || "q"?
+
+
+echo "A) Create a user account"
+
+echo "B) Delete a user account"
+
+echo "C) Change supplementary group for a user account"
+
+echo "D) Change initial group for a user account"
+
+echo "E) Change the default login shell for a user account"
+
+echo "F) Change the account expiration date"
+
+echo "Q) Quit"
+
+echo ""
+
+
+read -p "Enter selection: " selection
+
+echo ""
+
+ 
+
+if [ "$selection" = "A" ] || [ "$selection" = "a" ] ; then
+
+read -p "Enter the user name" username
+
+read -p "Enter the home directory" home
+
+read -p "Enter the login shell" shell
+
+sudo useradd -d "$home" -m -s "$shell" "$username"
+
+echo ""
+
+fi
+
+ 
+
+if [ "$selection" = "B" ] || [ "$selection" = "b" ] ; then
+
+read -p "Enter the user to delete" username
+
+sudo userdel -r "$username"
+
+echo ""
+
+fi
+
+ 
+
+if [ "$selection" = "C" ] || [ "$selection" = "c" ] ; then
+
+read -p "Enter the user to modify" username
+
+read -p "Enter the group's name" group
+
+sudo groupadd $group
+
+sudo usermod -G "$group" "$username"
+
+echo ""
+
+fi
+
+ 
+
+if [ "$selection" = "D" ] || [ "$selection" = "d" ] ; then
+
+read -p "Enter the user to modify" username
+
+read -p "Enter the group's name" group
+
+sudo groupadd $group
+
+sudo usermod -g "$group" "$username"
+
+echo ""
+
+fi
+
+ 
+
+if [ "$selection" = "E" ] || [ "$selection" = "e" ] ; then
+
+read -p "Enter the user to modify" username
+
+read -p "Enter the new shell" shell
+
+sudo usermod -s "$shell" "$username"
+
+echo ""
+
+fi
+
+ 
+
+if [ "$selection" = "F" ] || [ "$selection" = "f" ] ; then
+
+read -p "Enter the user to modify" username
+
+read -p "Enter the new expiration date" exp
+
+sudo usermod -e "$exp" "$username"
+
+echo ""
+
+fi
+
+ 
+
+sleep 3
+
+done
+
+ 
+
